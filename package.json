@@ -1,6 +1,6 @@
 {
-  "name": "helloworld",
-  "displayName": "HelloWorld",
+  "name": "marx",
+  "displayName": "Markdown Explorer (MARX)",
   "description": "",
   "version": "0.0.1",
   "engines": {
@@ -14,18 +14,31 @@
   "contributes": {
     "commands": [
       {
-        "command": "helloworld.helloWorld",
-        "title": "Hello World"
+        "command": "marx.hello",
+        "title": "Hello MARX"
       },
       {
-        "command": "helloworld.showTime",
-        "title": "Show Time"
-      },
-      {
-        "command": "helloworld.showWarning",
-        "title": "Show a Warning"
+        "command": "marx.showTime",
+        "title": "Show current Date/Time"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "marxViewContainer",
+          "title": "MARX",
+          "icon": "resources/marx-icon.png"
+        }
+      ]
+    },
+    "views": {
+      "marxViewContainer": [
+        {
+          "id": "marxExplorer",
+          "name": "Markdown Explorer"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

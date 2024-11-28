@@ -1,59 +1,33 @@
-# helloworld README
+# Markdown Explorer (MARX) - VSCode Extension 
 
-This is the README for your extension "helloworld". After writing up a brief description, we recommend including the following sections.
+The Markdown Explorer is an VSCode extension which will plug in to the view-bar to show the directory hierarchy and the Markdown-Files (.md) only.
+Together with the MARP-Extension it allows to use the file-system directory structure together with Markdown-files to be used as knowledge-base, e.g. as an alternative to OneNote.
+The benefit is, that VCS can be used to track file changes and the storage is on your own machine.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- Additional MARX Symbol in the activation bar to open the Markdown Explorer view
+- Markdown-Explorer view, showing the directory hierarchy and Markdown-files (.md) only.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- Optional: Install the MARP-Tool and the corresponding VSCode extension to also support Markdown files as slide-decks.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+Currently none.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+Work in progress.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+Initial release of Markdown-Explorer (MARX)
 
 ---
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
 
 ## Working with Markdown
 

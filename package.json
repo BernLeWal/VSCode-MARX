@@ -16,6 +16,14 @@
       {
         "command": "helloworld.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "helloworld.showTime",
+        "title": "Show Time"
+      },
+      {
+        "command": "helloworld.showWarning",
+        "title": "Show a Warning"
       }
     ]
   },

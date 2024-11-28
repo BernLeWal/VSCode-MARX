@@ -19,6 +19,18 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInformationMessage('Hello VS Code!');
 	});
 
+	const disposable2 = vscode.commands.registerCommand('helloworld.showTime', () => {
+		const now = new Date();
+		const date = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
+		const time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+		vscode.window.showInformationMessage('Current time is ' + date + ' ' + time);
+	});
+
+	const disposable3 = vscode.commands.registerCommand('helloworld.showWarning', () => {
+		vscode.window.showWarningMessage('Your warning message here');
+	});
+
+
 	context.subscriptions.push(disposable);
 }
 

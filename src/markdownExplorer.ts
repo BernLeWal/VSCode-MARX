@@ -13,7 +13,7 @@ export class MarkdownExplorerProvider
   refresh(): void {
     this._onDidChangeTreeData.fire();
   }
-  
+
   getTreeItem(element: MarkdownItem): vscode.TreeItem {
     return element;
   }
@@ -39,15 +39,39 @@ export class MarkdownExplorerProvider
       const stat = fs.statSync(fullPath);
 
       if (stat.isDirectory()) {
-        items.push(
-          new MarkdownItem(file, vscode.Uri.file(fullPath), vscode.TreeItemCollapsibleState.Collapsed)
-        );
+        // check if a file named "README.md" exists in the directory, if yes then open the file, read the first heading, and use that as label for the tree item
+        const readmePath = path.join(fullPath, 'README.md');
+        if (fs.existsSync(readmePath)) {
+          items.push(
+            new MarkdownItem(this.getLabel(readmePath), vscode.Uri.file(fullPath), vscode.TreeItemCollapsibleState.Collapsed)
+          );
+        }
+        else {
+          items.push(
+            new MarkdownItem(file, vscode.Uri.file(fullPath), vscode.TreeItemCollapsibleState.Collapsed)
+          );
+        }
       } else if (file.endsWith('.md')) {
-        items.push(new MarkdownItem(file, vscode.Uri.file(fullPath), vscode.TreeItemCollapsibleState.None));
+        if (directory !== basePath && file === 'README.md') {
+          continue;
+        }
+        items.push(
+          new MarkdownItem(this.getLabel(fullPath), vscode.Uri.file(fullPath), vscode.TreeItemCollapsibleState.None)
+        );
       }
     }
 
     return items;
+  }
+
+  private getLabel(fullPath: string): string {
+    // open the file, read the first heading, and use that as label for the tree item
+    const fs = require('fs');
+    const content = fs.readFileSync(fullPath, 'utf8');
+    const lines = content.split('\n');
+    const firstHeading = lines.find((line: string) => line.startsWith('# '));
+    const label = firstHeading ? firstHeading.substring(2).trim() : fullPath;        
+    return label;
   }
 }
 
@@ -66,6 +90,18 @@ class MarkdownItem extends vscode.TreeItem {
         title: 'Open Markdown File',
         arguments: [this.resourceUri]
       };
+    }
+    // if treeitem is collapsible, then check if it has a file named "README.md" in the directory, if yes then create a marxExplorer.openFile command for that file
+    else {
+      const fs = require('fs');
+      const readmePath = path.join(this.resourceUri.fsPath, 'README.md');
+      if (fs.existsSync(readmePath)) {
+        this.command = {
+          command: 'marxExplorer.openFile',
+          title: 'Open Markdown File',
+          arguments: [vscode.Uri.file(readmePath)]
+        };
+      }
     }
   }
 

@@ -20,6 +20,10 @@
       {
         "command": "marx.showTime",
         "title": "Show current Date/Time"
+      },
+      {
+        "command": "marxExplorer.refresh",
+        "title": "🔄"
       }
     ],
     "viewsContainers": {
@@ -36,6 +40,15 @@
         {
           "id": "marxExplorer",
           "name": "Markdown Explorer"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "marxExplorer.refresh",
+          "group": "navigation",
+          "when": "view == marxExplorer"
         }
       ]
     }

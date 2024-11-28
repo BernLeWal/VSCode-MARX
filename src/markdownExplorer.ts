@@ -9,6 +9,11 @@ export class MarkdownExplorerProvider
   readonly onDidChangeTreeData: vscode.Event<MarkdownItem | undefined | void> =
     this._onDidChangeTreeData.event;
 
+
+  refresh(): void {
+    this._onDidChangeTreeData.fire();
+  }
+  
   getTreeItem(element: MarkdownItem): vscode.TreeItem {
     return element;
   }
